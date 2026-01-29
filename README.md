@@ -347,4 +347,4 @@ docker-compose exec frontend npm install
 
 ## License
 
-This project is for OpsWerks examp purposes only.
+This project is for OpsWerks exam purposes only.
