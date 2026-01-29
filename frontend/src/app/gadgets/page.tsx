@@ -44,12 +44,11 @@ export default function GadgetsPage() {
         router.push('/');
         return;
       }
-    } catch (error) {
       console.error('Failed to fetch gadgets:', error);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [router]);
 
   const connectWebSocket = useCallback(() => {
     const wsUrl = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8000';
