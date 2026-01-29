@@ -148,6 +148,8 @@ Note: For compatibility, the backend also accepts `uername` as an alias for `use
 }
 ```
 
+Note: JWT tokens are also set as HttpOnly cookies for secure storage. The frontend uses these cookies for subsequent API requests.
+
 ### Gadgets
 
 | Method | Endpoint                   | Description                          |
@@ -169,7 +171,7 @@ Note: For compatibility, the backend also accepts `uername` as an alias for `use
 
 ### WebSocket
 
-Connect to `ws://localhost:8000/ws/gadgets/?token=<access_token>` for real-time updates.
+Connect to `ws://localhost:8000/ws/gadgets/` for real-time updates. Authentication is handled automatically via HttpOnly cookies (no token parameter required).
 
 **Message Types:**
 
@@ -203,6 +205,26 @@ Connect to `ws://localhost:8000/ws/gadgets/?token=<access_token>` for real-time 
 
 ---
 
+## Security
+
+### Authentication Flow
+
+1. User submits credentials to `/api/auth/login/`
+2. Backend validates credentials and generates JWT tokens
+3. Tokens are set as HttpOnly cookies (secure, not accessible via JavaScript)
+4. Subsequent API requests automatically include cookies
+5. WebSocket connections are authenticated via session cookies
+6. Logout clears all auth cookies via `/api/auth/logout/`
+
+### Security Features
+
+- **HttpOnly Cookies** - Tokens stored in HttpOnly cookies, preventing XSS attacks
+- **CORS Protection** - Only allowed origins can make API requests
+- **User Isolation** - Users can only access their own gadgets
+- **Password Hashing** - Passwords stored using Django's PBKDF2 algorithm
+
+---
+
 ## Technology Stack
 
 ### Backend
@@ -210,7 +232,7 @@ Connect to `ws://localhost:8000/ws/gadgets/?token=<access_token>` for real-time 
 - Django 4.2
 - Django REST Framework
 - Django Channels (WebSocket support)
-- SimpleJWT (JWT Authentication)
+- SimpleJWT (JWT Authentication with HttpOnly cookies)
 - PostgreSQL
 - Daphne (ASGI server)
 
@@ -307,7 +329,7 @@ make start
 ### WebSocket not connecting
 
 1. Ensure you're using the correct WebSocket URL: `ws://localhost:8000/ws/gadgets/`
-2. Check that the access token is valid and not expired
+2. Verify you are logged in (session cookies must be set)
 3. Verify the backend is running: `make status`
 4. Check backend logs for errors: `make logs-backend`
 
@@ -325,4 +347,4 @@ docker-compose exec frontend npm install
 
 ## License
 
-This project is for demonstration purposes.
+This project is for OpsWerks examp purposes only.
