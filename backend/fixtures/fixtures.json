@@ -1,0 +1,63 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "juandelacruz",
+      "password": "pbkdf2_sha256$720000$dummysalt123456789012$PU8pBxgJkSzuCFPHH9+3+K8M4MHQ5KlXYqB6/H9Z8zo=",
+      "email": "juan@example.com",
+      "first_name": "Juan",
+      "last_name": "Dela Cruz",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "username": "mariaclarita",
+      "password": "pbkdf2_sha256$720000$dummysalt123456789012$PU8pBxgJkSzuCFPHH9+3+K8M4MHQ5KlXYqB6/H9Z8zo=",
+      "email": "maria@example.com",
+      "first_name": "Maria",
+      "last_name": "Clarita",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "gadgets.gadget",
+    "pk": 1,
+    "fields": {
+      "name": "Smart Watch Pro",
+      "description": "A premium smartwatch with health monitoring, GPS tracking, and 7-day battery life.",
+      "owner": 1,
+      "created": "2024-01-15T10:30:00Z",
+      "last_modified": "2024-01-15T10:30:00Z"
+    }
+  },
+  {
+    "model": "gadgets.gadget",
+    "pk": 2,
+    "fields": {
+      "name": "Wireless Earbuds X1",
+      "description": "Noise-cancelling wireless earbuds with crystal clear audio and 24-hour battery.",
+      "owner": 1,
+      "created": "2024-01-16T14:20:00Z",
+      "last_modified": "2024-01-16T14:20:00Z"
+    }
+  },
+  {
+    "model": "gadgets.gadget",
+    "pk": 3,
+    "fields": {
+      "name": "Portable Charger Max",
+      "description": "20000mAh portable charger with fast charging support for all devices.",
+      "owner": 2,
+      "created": "2024-01-17T09:15:00Z",
+      "last_modified": "2024-01-17T09:15:00Z"
+    }
+  }
+]
