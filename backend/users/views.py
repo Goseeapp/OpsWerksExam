@@ -63,3 +63,13 @@ class UserMeView(APIView):
 
     def get(self, request):
         return Response(UserSerializer(request.user).data)
+
+
+class LogoutView(APIView):
+    """Clear auth cookies."""
+
+    def post(self, request):
+        response = Response(status=status.HTTP_204_NO_CONTENT)
+        response.delete_cookie('access_token')
+        response.delete_cookie('refresh_token')
+        return response
