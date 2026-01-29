@@ -4,7 +4,7 @@ A full-stack application for managing gadgets with real-time updates. Built with
 
 ## Features
 
-- **User Authentication** - JWT-based authentication with secure token management
+- **User Authentication** - JWT-based authentication using HttpOnly cookies
 - **Gadget CRUD Operations** - Create, read, update, and delete gadgets
 - **Real-time Updates** - WebSocket integration for instant updates across browser tabs
 - **Bulk Operations** - Select multiple gadgets and delete them at once
@@ -119,6 +119,7 @@ Wait for all services to start (this may take a moment on first run), then acces
 | POST   | `/api/auth/login/`  | Login with username/password |
 | POST   | `/api/auth/refresh/`| Refresh access token        |
 | GET    | `/api/auth/me/`     | Get current user info       |
+| POST   | `/api/auth/logout/` | Clear auth cookies          |
 
 **Login Request:**
 
@@ -128,6 +129,8 @@ Wait for all services to start (this may take a moment on first run), then acces
   "password": "password123"
 }
 ```
+
+Note: For compatibility, the backend also accepts `uername` as an alias for `username`.
 
 **Login Response:**
 

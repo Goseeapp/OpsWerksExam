@@ -116,6 +116,7 @@ export default function GadgetsPage() {
   }, [router, fetchGadgets, connectWebSocket]);
 
   const handleLogout = () => {
+    api.logout().catch(() => null);
     clearAuth();
     if (wsRef.current) {
       wsRef.current.close();

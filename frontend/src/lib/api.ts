@@ -64,6 +64,11 @@ export const api = {
 
   getMe: () => request<User>('/api/auth/me/'),
 
+  logout: () =>
+    request<void>('/api/auth/logout/', {
+      method: 'POST',
+    }),
+
   getGadgets: () => request<Gadget[]>('/api/gadgets/'),
 
   getGadget: (id: number) => request<Gadget>(`/api/gadgets/${id}/`),
